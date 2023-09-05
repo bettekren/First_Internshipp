@@ -1,0 +1,1 @@
+#blog klasörünün bir python modülü olduğunu gösteriyor.Bunun içine karışmayacağız 

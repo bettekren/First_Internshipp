@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <style>
+        
+        body {
+            background-image: url('https://images.unsplash.com/photo-1541140134513-85a161dc4a00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z3JleSUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D&w=1000&q=80');
+            background-repeat: no-repeat;
+            background-size: cover;
+            
+        }
+
+       .form2 {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        
+        } 
+
+       
+        
+    </style>
+</head>
+<body>
+  <nav class=" p-2 navbar navbar-expand-lg navbar-dark bg-dark rounded ">
+    <a class="navbar-brand" href="#"> <i class="fa-solid fa-user" style="color: #c7cedb;"></i></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <ul class="navbar-nav ml-auto">
+         {% if  request.user.is_authenticated %}
+       
+          <li class="nav-item active">
+             <a class="nav-link" href="/articles/dashboard">Control Panel <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link " href="/user/logout">Logout</a>
+          </li>
+
+         {% else %}
+
+          <li class="nav-item active">
+           <a class="nav-link" href="/user/login">Login</a>
+          </li>
+
+         {% endif %}
+         <li class="nav-item active">
+          <a class="nav-link" href="/articles/">Articles</a>
+         </li>  
+        
+          <li class="nav-item active">
+           <a class="nav-link" href="#">About Us</a>
+          </li>  
+
+          <li class="nav-item active">
+            <a class="nav-link" href="/user/register">Register</a>
+           </li>
+
+           
+           
+         </ul>
+       
+      </div>
+  
+    
+
+      <form class="form-inline my-2 my-lg-0 form2 ">
+          <input class="form-control mr-sm-2 me-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </nav>
+  
+
+
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

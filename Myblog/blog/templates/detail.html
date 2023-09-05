@@ -1,0 +1,91 @@
+{% extends 'layout.html' %}
+{% block body  %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+         <!-- Title -->
+         <h1>{{article.title}}</h1>
+         <hr>
+         <!-- Date Time -->
+         <p>{{article.created_date}}</p>
+         <hr>
+         <!--  Post content -->
+         <hr>
+         <p class="lead">
+         {{article.content | safe}}
+         </p>
+         <hr>
+         <!-- Author  -->
+         <p class="lead">
+           {{article.author.username}}
+         </p>
+            <!-- image -->
+         {% if article.article_image %}
+            <img class="img-fluid rounded" src="{{article.article_image.url}} " alt="image"> 
+         {% endif %}
+             
+ 
+            <!-- Post content-->
+            <article>
+                <!-- Post header-->
+                <header class="mb-4">
+                    <!-- Post title-->
+                    <h1 class="fw-bolder mb-1">Welcome to Blog Post!</h1>
+                    <!-- Post meta content-->
+                    <div class="text-muted fst-italic mb-2">Posted on January 1, 2023 by Start Bootstrap</div>
+                    <!-- Post categories-->
+                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
+                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
+                </header>
+
+            </article>
+        </div>
+       <h3>Comments</h3>
+       <hr>
+       {% if comments%}
+       {% for comment in comments %}
+       <div class="media mb-4 bg-secondary p-3 rounded-2">
+        <div class="bg-white rounded-3">
+        <img class="d-flex mr-3 rounded-circle " src="https://cdn.vectorstock.com/i/1000x1000/36/96/comment-icon-vector-22003696.webp" width="50px ">
+        <div class="media-body">
+            <h5 class="mt-0">{{comment.comment_author}}</h5>
+            {{comment.comment_content}}
+        </div>
+      </div> 
+       </div>
+       {% endfor %}
+       
+       {% else %}
+       <div class="alert alert-danger">
+        There isn't any comment in this article
+       </div>
+       {% endif %}
+        <div class="card my-4 ">
+            <h5 class="card-header text-dark">Leave a Comment:</h5>
+            <div class="card-body ">
+                <form method="post" action="{% url 'article:comment' article.id %}">
+                    {% csrf_token %}
+                    <div class="form-group mb-2">
+                        <label for="formGroupExampleInput" >Name</label>
+                        <input  name= "comment_author" type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your name">
+                      </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Comment</label>
+                        <textarea name= "comment_content" class="form-control" name="" id="" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-danger ">Send</button>
+                </form>
+            </div>
+   </div>
+
+
+      </div>
+    
+         <!-- Footer-->
+        <footer class="py-3 bg-dark">
+            <div><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+        </footer>
+            
+       
+
+{% endblock  %}

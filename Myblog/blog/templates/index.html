@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class=" text-center bg-dark p-lg-5 text-white shadow-lg rounded ">
+    <h3>Welcome to My Website</h3>
+    <p>There are so many blog post here! </p>
+
+</div>
+
+<p>
+    {% if request.user.is_authenticated %}
+    
+    <p>Hello, {{ request.user.username }} Content visible to logged in users only.</p>
+    {% else %} 
+    <p>Lütfen oturum açın veya hesap oluşturun.</p>
+    {% endif %}
+</p>
+
+{% comment %} <ul>
+{% for number in numbers  %}
+    <li> {{number}} </li>
+{% endfor %}
+</ul> {% endcomment %}
+
+
+{% comment %} {% if number1 == 20 %}
+<p>Number is equal to 20</p>
+{% else %}
+<p>Number is not equal to 20</p>
+{% endif %} {% endcomment %}
+
+{% comment %} <p>
+{{number1 }}
+
+</p> {% endcomment %}
+{% comment %}   {% endcomment %}
+{% endblock %}
+
+
+

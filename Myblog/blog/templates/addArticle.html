@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+<div class="row">
+    <div class="col-md-8 offset-md-2 bg-dark   bg-gradient text-center border border-3 p-4 text-light" >
+        <h3 class="text-center">Create Article</h3>
+        <hr>  
+    
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form|crispy }}
+            <br>
+            <button type="submit" class=" btn btn-outline-danger btn-lg  active"  aria-pressed="true" role="button" >Add the Article</button>
+        
+        </form>
+      
+       <p>Please, login or create account. </p>
+  
+       
+    </div>
+</div>
+{% endblock  %}
